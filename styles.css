@@ -13,21 +13,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: transparent; /* 🔸 прозрачный */
+  min-height: 100vh;       /* вместо height — чтобы не тянулось вверх */
+  background: transparent;
+  box-sizing: border-box;
+  padding: 20px 0;
 }
 
-/* === Игровой контейнер (видимая "карточка") === */
+/* === Игровой контейнер === */
 #game-container {
-  background: rgba(20, 30, 50, 0.85); /* 🔸 полупрозрачный контейнер */
+  background: rgba(20, 30, 50, 0.85);
   border-radius: 16px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4); /* мягкая тень */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
   padding: 20px;
-  max-width: 1200px;
+  max-width: 1100px;
   width: 95%;
   transition: all 0.3s ease;
-  backdrop-filter: blur(8px); /* 🔸 лёгкое размытие под фоном */
+  backdrop-filter: blur(8px);
+  margin: 0 auto;
 }
+
 
 /* === Правила === */
 #rules h2, #game-title {
@@ -207,28 +211,26 @@ body {
   align-items: center;
   background: rgba(0, 0, 0, 0.8);
   z-index: 100;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
-.modal.hidden {
-  display: none;
-}
+.modal.hidden { display: none; }
 
 .modal-content {
   background: rgba(30, 40, 60, 0.9);
-  padding: 30px;
+  padding: 20px 25px;        /* 🔸 меньше отступов */
   border-radius: 12px;
   text-align: center;
   color: #fff;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-  max-width: 400px;
-  width: 90%;
-  animation: fadeIn 0.4s ease;
+  max-width: 320px;          /* 🔸 уменьшенный размер */
+  width: 85%;
+  animation: fadeIn 0.3s ease;
 }
 
 .modal-content img {
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;          /* 🔸 уменьшаем гиф */
   border-radius: 10px;
   margin: 15px 0;
 }
