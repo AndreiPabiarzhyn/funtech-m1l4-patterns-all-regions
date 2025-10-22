@@ -1,0 +1,244 @@
+/* === Базовые настройки === */
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(circle at top, #0b132b, #1c2541);
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* === Общий контейнер === */
+#scale-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#game-container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  max-width: 1200px;
+  width: 95%;
+  transition: all 0.3s ease;
+}
+
+/* === Правила === */
+#rules h2, #game-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+#rules p, #rules li {
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 3px 0;
+}
+
+#rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* === Таймер === */
+#timer {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 20px;
+  margin-top: 10px;
+  color: #00eaff;
+  text-shadow: 0 0 6px rgba(0, 234, 255, 0.5);
+}
+
+/* === Игровая зона === */
+#game-area {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#pieces, #workspace, #pattern {
+  flex: 1;
+  min-width: 260px;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* === Фигуры === */
+.piece {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  animation: fadeIn 0.4s ease;
+}
+
+.piece:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+.shape-circle { border-radius: 50%; }
+
+.shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 60px solid;
+}
+
+/* === Контейнер с кнопками === */
+#controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* === Универсальные кнопки === */
+.control-btn {
+  background: linear-gradient(145deg, #007bff, #00b8ff);
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 12px rgba(0,150,255,0.4);
+}
+
+.control-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(0,200,255,0.6);
+}
+
+.control-btn:active {
+  transform: scale(0.97);
+}
+
+/* === Подсветка кнопки "Проверить" === */
+#check-btn {
+  background: linear-gradient(145deg, #00c851, #007e33);
+  box-shadow: 0 0 12px rgba(0,255,100,0.5);
+}
+
+#check-btn:hover {
+  background: linear-gradient(145deg, #00e25b, #009e43);
+  box-shadow: 0 0 20px rgba(0,255,100,0.7);
+}
+
+/* === Контрастный режим (активная кнопка) === */
+#contrast-btn.active {
+  background: linear-gradient(145deg, #ffb347, #ff9800);
+  box-shadow: 0 0 14px rgba(255,165,0,0.7);
+  color: #fff;
+}
+
+/* === Кнопки уровней === */
+#levels {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.level-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.level-btn:hover:not(:disabled) {
+  background: rgba(0,200,100,0.5);
+  transform: scale(1.05);
+}
+
+.level-btn:disabled {
+  background: rgba(255,255,255,0.1);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.level-btn.active {
+  background: #2ecc71;
+  box-shadow: 0 0 10px rgba(46,204,113,0.6);
+  transform: scale(1.05);
+}
+
+/* === Модалки === */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: rgba(30, 40, 60, 0.9);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  width: 90%;
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-content img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+
+/* === Анимации === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* === Адаптив === */
+@media (max-width: 800px) {
+  #game-area {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Составь узор</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 🟢 Стартовое окно -->
+  <div id="start-modal" class="modal visible">
+    <div class="modal-content">
+      <h2>Добро пожаловать!</h2>
+      <p>Собери узоры и стань мастером паттернов!</p>
+      <button id="start-game" class="control-btn">Начать игру</button>
+    </div>
+  </div>
+
+  <!-- 🟢 Модалка успеха -->
+  <div id="success-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Отлично!</h2>
+      <img src="assets/welldone.gif" alt="Молодец" />
+      <button class="control-btn" id="close-success">Ок</button>
+    </div>
+  </div>
+
+  <!-- 🟢 Модалка ошибки -->
+  <div id="fail-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Попробуй снова!</h2>
+      <img src="assets/bed.gif" alt="Ошибка" />
+      <button class="control-btn" id="close-fail">Ок</button>
+    </div>
+  </div>
+
+  <!-- Основная игра -->
+  <div id="scale-wrapper">
+    <div id="game-container">
+      <div id="rules">
+        <h2 id="rules-title"></h2>
+        <ul id="rules-list"></ul>
+      </div>
+
+      <div id="header">
+        <h1 id="game-title"></h1>
+        <div id="timer"></div>
+      </div>
+
+      <div id="levels"></div>
+
+      <div id="game-area">
+        <div id="pieces"></div>
+        <div id="workspace"></div>
+        <div id="pattern"></div>
+      </div>
+
+      <div id="controls">
+        <button class="control-btn" id="check-btn"></button>
+        <button class="control-btn" id="reset-btn"></button>
+        <button class="control-btn" id="contrast-btn"></button>
+      </div>
+
+      <div id="victory-screen" class="overlay hidden">
+        <h2 id="victory-title"></h2>
+        <p id="victory-text"></p>
+      </div>
+
+      <div id="final-victory-overlay" class="modal hidden">
+        <div class="modal-content">
+          <h2 id="final-title"></h2>
+          <p id="final-text"></p>
+          <img src="assets/win.gif" alt="Victory" />
+          <button class="control-btn" id="restart-btn"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Подключение скриптов -->
+  <script src="text.js"></script>
+  <script src="utils.js"></script>
+  <script src="ui.js"></script>
+  <script src="game.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
